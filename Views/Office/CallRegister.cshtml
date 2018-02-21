@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "CallRegister";
+}
+
+<div class="card-heading alert-material-yellow-A400" style=" background-color: #deb887 !important; color: rgba(0,0,0,.84);">
+    <h3>
+        <i class="fa fa-x fa-tasks"></i> Call Center
+    </h3>
+</div>
+</br>
+<p>
+  @Html.ActionLink("Create Call Type", "CreateCallType")
+</p>
+
+
+<p>
+    @Html.ActionLink("Show Call History", "CallHistory", "Home")
+</p>
+<p>
+    @Html.ActionLink("Generate Report", "ReportGenerate")
+</p>
+<p>
+    @Html.ActionLink("Set Outbound Call", "SetOutboundCall")
+</p>

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "CallRegistration";
+}
+
+<img src="~/Content/images/callCenter.jpg" class="img-rounded" alt="image" width="500px" height="300px"/>
+<br>
+
+<p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.ActionLink("INBOUND", "CallRegistration", "Employee")
+            </div>
+            <div class="col-md-4">
+                @Html.ActionLink("OUTBOUND", "OutboundCallforEmp", "Employee")
+            </div>
+            <div class="col-md-4">
+                @Html.ActionLink("My Call History", "CallHistory", "Home")
+            </div>
+        </div>
+    </div>
+</p>
+
+<script>
+    var success = document.getElementById("successfull");
+</script>

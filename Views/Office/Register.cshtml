@@ -1,0 +1,155 @@
+﻿<style>
+    .header-panel {
+        display: none;
+    }
+
+    .shadow-z-2 {
+        display: none;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .main-body {
+        width: 100% !important;
+        height: 100vh;
+        margin: 0 !important;
+        margin-top: -73px !important;
+    }
+
+    .login-content {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    body.login-content {
+        text-align: center;
+    }
+
+    .login-content:before {
+        height: 50%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #00bcd4;
+        content: "";
+        z-index: 0;
+    }
+
+    .login-body {
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #5e5e5e;
+        background-color: #edecec;
+    }
+
+    .login-box {
+        position: fixed;
+        z-index: 12;
+        background: #fff;
+        box-shadow: 0 1px 11px rgba(0,0,0,0.27);
+        border-radius: 2px;
+        width: 100%;
+        display: inline-block;
+        margin-top: 60%;
+        vertical-align: middle;
+        position: relative;
+        padding: 15px;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .main-body {
+        padding: 0 !important;
+    }
+
+    .validation-summary-errors li {
+        list-style-type: none !important;
+        margin-left: -40px;
+    }
+</style>
+@model IEnumerable<Office_Management.Models.OfficeInfo>
+@{
+       if (ViewBag.ErrorMessage != null)
+       {
+           <p>@ViewBag.ErrorMessage</p>
+       }
+   }
+<div class="login-body">
+    <div id="screen" class="login-content">
+
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-4">
+                <div id="loginForm" class="login-box shadow-z-1">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                        <div style="padding: 35px 55px;">
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p class="text-muted" style="list-style-type: none;">@Html.ValidationSummary(true)</p>
+
+
+                                    <input class="form-control" name="UserName" placeholder="User Name" />
+                                    <input class="form-control" type="password" name="Password" placeholder="Password" />
+                                    <input class="form-control" type="password" name="ConfirmPassword" placeholder="Confirm Password"/>
+                                    <form>
+                                        
+                                        <select class="form-control"name="officeId">
+                                            <option selected="selected">Select Your Office</option>
+                                            @foreach (var office in Model)
+                                            {
+                                                <option value="@office.Id">@office.OfficeName</option>
+                                            }
+                                        </select>
+                                    </form>
+                                    <div style="margin-top: 20px;">
+                                        <button class="btn btn-fab btn-raised btn-material-green-600"><i class="mdi-navigation-arrow-forward"></i></button>
+                                        &nbsp;
+                                        &nbsp;
+                                        &nbsp; <a class="btn btn-fab btn-raised btn-material-red" href="/Account/Login">
+                                            <i class="mdi-image-nature-people"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            @*@Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })*@
+
+
+                            @*<div class="text-danger">
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                    <div class="text-danger">@Html.ValidationMessageFor(m => m.Password)</div>
+                                </div>*@
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>
+<script>
+    var x = $(window).height() - 15;
+    console.log(x);
+    document.getElementById("screen").style.height = x + 'px';
+</script>

@@ -1,0 +1,41 @@
+﻿
+@using Office_Management.Models
+@model IEnumerable<Office_Management.Models.OutboundCallReg>
+@{
+    ViewBag.Title = "CreateOutboundByOwn";
+    var callingStatuses = ViewBag.callingStatus as List<CallingStatus>;
+}
+
+<h2>CreateOutboundByOwn</h2>
+
+<form name="" method="post">
+
+    Name
+    <input class="form-control" type="text" name="Name" required="" placeholder="John Doe">
+    <br />
+    Mobile Number
+    <input class="form-control" type="text" name="PhoneNumber" required="" placeholder="01xxxxx">
+
+    Reason For Calling
+    <input class="form-control" type="text" name="Reason" required="">
+    <br/>
+    Calling Status
+    <select class="form-control" name="CallingStatusId">
+        <option value="">Select ... ...</option>
+
+        @if (callingStatuses != null)
+        {
+            foreach (var callingStatus in callingStatuses)
+            {
+                <option value="@callingStatus.Id">@callingStatus.Status</option>
+            }
+        }
+    </select>
+    <br>
+    Comment
+    <input class="form-control" type="text" name="AssignerComment" required="">
+    <br />
+
+    <input class="btn btn-info" type="submit" value="Submit">
+</form>
+

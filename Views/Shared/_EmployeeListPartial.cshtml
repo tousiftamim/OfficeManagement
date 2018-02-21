@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Office_Management.Models.SideBar>
+ @foreach (var list in Model)
+ {
+     <div class="row employee-card">
+         <div class="pp">
+             <img src="../../Content/dist/image/pp/avatar1.jpg"/>
+         </div>
+         <div class="media-body">
+             <div class="employee-name">
+                 @list.EmployeeName
+             </div>
+             <div style="width: auto; display: inline-block; height: 20px; background: #f7f7f7; font-size: 10px; color: dimgray; padding: 2px; padding-left: 5px;" class="shadow-z-1">
+                @list.OfficeName
+             </div>
+         </div>
+     </div>
+
+ }

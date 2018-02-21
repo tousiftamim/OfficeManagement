@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Office_Management.Models.OfficeInfo>
+@{
+    ViewBag.Title = "EmployeeRegistration";
+}
+
+<h2>EmployeeRegistration</h2>
+
+@using (Html.BeginForm())
+ {
+     <form>
+         <p>Select Your Office Here</p>
+         <select name="officeId">
+             @foreach (var office in Model)
+             {
+                 <option value="@office.Id">@office.OfficeName</option>
+             }
+         </select>
+         <input type="submit" value="Submit" />
+     </form>
+ }

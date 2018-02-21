@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Office_Management.Models.TaskInfoVM>
+@{
+    ViewBag.Title = "EmployeeHome";
+}
+
+<h2>My Task</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>IsDone</th>
+            <th>IsAccept</th>
+        </tr>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.TaskName</td>
+                <td>@task.TaskDescription</td>
+                <td>@task.TaskDeadline</td>
+
+                <td>
+                    @if (task.TaskDeadline < DateTime.Now)
+                    {
+                         <a>Deadline Expeired </a>
+                    }
+                    else
+                    {
+                       
+                        if (task.TaskStatus)
+                        {
+                            <a href="/Employee/NotDoneWork?id=@task.Id">Not Done</a>
+                        }
+                        else
+                        {
+                            <a href="/Employee/DoneWork?id=@task.Id">Done</a>
+                        }
+                    }
+                    
+                </td>
+
+                <td>@task.IsAccept</td>
+            </tr>
+
+        }
+
+
+@*        @foreach (var task in Model)*@
+@*        {*@
+@*            <tr></tr>*@
+@**@
+@*        }*@
+
+    </table>
+
+
+</body>
+</html>

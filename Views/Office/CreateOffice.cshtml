@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "OfficeInfo";
+}
+
+<h2>Create Your Office here</h2>
+<!DOCTYPE html>
+<html>
+<body>
+
+    <form action="CreateOffice" method="POST">
+        Office Name: <input class="form-control"type ="text" name="OfficeName" required="">
+        <br />
+        Address: <input class="form-control" type="text" name="Address" required="">
+        <br/>
+        Number Of Employee: <input class="form-control" type="text" name="empnumber" required="">
+        <br />
+        <input class="btn btn-success" type="submit" value="Submit">
+    </form>
+</body>
+</html>

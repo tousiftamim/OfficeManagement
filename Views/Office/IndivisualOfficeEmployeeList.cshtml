@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Office_Management.Models.EmployeeListVM>
+
+
+    <table class="table table-bordered table-hover table-stripped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                Action
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="anchor-done">
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                    @*                <a href="/Office/SetTask?empId=@item.EmployeeId">Set Task</a>*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                    
+                </td>
+                <td>
+                    <a class="btn btn-material-green-600" href="/Office/SetTask?empId=@item.EmployeeId">
+                        Set Task
+                    </a>
+                    <a class="btn btn-material-blue-400" href="/Office/IndivisualDoneWork?empId=@item.EmployeeId">Show Done Work</a>
+                    <a class="btn btn-material-yellow-400" href="/Office/IndivisualPendinWork?empId=@item.EmployeeId">Show Pending Work</a>
+                    <a class="btn btn-material-yellow-400" href="/Office/IndivisualWorkHistory?empId=@item.EmployeeId">Work History</a>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+

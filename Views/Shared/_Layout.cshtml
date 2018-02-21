@@ -1,0 +1,276 @@
+﻿@*@model IEnumerable<Office_Management.Models.UserProfile>*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Office Management</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link href="../../Content/dist/css/roboto.min.css" rel="stylesheet" />
+    <link href="../../Content/dist/css/material.min.css" rel="stylesheet" />
+    <link href="../../Content/dist/css/material-fullpalette.min.css" rel="stylesheet" />
+    <link href="../../Content/dist/css/ripples.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../Content/dist/css/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css">
+
+    <link href="../../Content/Site.css" rel="stylesheet" />
+
+    <!-- for datetime picker -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../../Content/dist/js/material.min.js"></script>
+    <script src="../../Content/dist/js/ripples.min.js"></script>
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+
+
+</head>
+<body>
+    <div class="header-panel shadow-z-2">
+
+
+        <div class="container-fluid" style="width: 100%">
+
+
+
+
+            <ul class="header-inner">
+                <li>@Html.ActionLink("Office Management", "Index", "Home")</li>
+                <li class="pull-right">
+                    <ul class="top-menu">
+
+                        @if (Roles.IsUserInRole("Employee"))
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Employee")</li>
+                        }
+                        @Html.Partial("_LoginPartial")
+
+
+                        <li>
+                            <a id="toggle-side"><i id="toggle" class="fa fa-toggle-on fa-inverse"></i></a>
+                        </li>
+                    </ul>
+                </li>
+                @*<li style="height: 30px; width: 30px; background-color: red"></li>
+                    @Html.Partial("_LoginPartial")
+
+
+
+
+
+                    <li class="col-md-4" style="padding-top: 5px;" id="toggle-side">
+                        <i class="fa fa-list fa-inverse"></i>
+                    </li>*@
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="clearfix">
+    </div>
+    <div class="container-fluid main" style="margin-top: 49px;">
+        <div class="row">
+
+            <div class="col-xs-2 menu" id="fixed-side-bar">
+                <div class="userprofile">
+                </div>
+                <ul class="main-menu">
+
+                    @if (WebSecurity.IsAuthenticated)
+                    {
+                        var isOfficeOwner = Roles.IsUserInRole("OfficeOwner");
+                        var isEmployee = Roles.IsUserInRole("Employee");
+                        if (isOfficeOwner)
+                        {
+
+                        <li>
+                            <a href="/Office/OfficeOwnerHome">
+                                <i style="font-size: 18px;" class="fa fa-home"></i>&nbsp;&nbsp;Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/CreateOffice">
+                                <i style="font-size: 18px;" class="fa fa-plus"></i>&nbsp;&nbsp;Create Office
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/EmployeeList">
+                                <i style="font-size: 18px;" class="fa fa-briefcase"></i>&nbsp;&nbsp;Employee List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/ShowDoneWork">
+                                <i style="font-size: 18px;" class="fa fa-check-circle"></i>&nbsp;&nbsp; Done Work
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/TodaysTask">
+                                <i style="font-size: 18px;" class="fa fa-tasks"></i>&nbsp;&nbsp; Todays Task
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/PendingTask">
+                                <i style="font-size: 18px;" class="fa fa-exclamation"></i>&nbsp;&nbsp; Pending Task
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/PendingEmployees">
+                                <i style="font-size: 18px;" class="fa fa-user-plus"></i>&nbsp;&nbsp; Pending Empplyees
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/TaskHistory">
+                                <i style="font-size: 18px;" class="fa fa-history"></i>&nbsp;&nbsp; Task History
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Office/CallRegister">
+                                <i style="font-size: 18px;" class="fa fa-phone-square"></i>&nbsp;&nbsp; Call Center
+                            </a>
+                        </li>
+
+                        }
+                        if (isEmployee)
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Employee")</li>
+                            <li>@Html.ActionLink("My Task", "MyTask", "Employee")</li>
+                        <li><i style="font-size: 18px;" class="fa fa-phone-square"></i>&nbsp;&nbsp; @Html.ActionLink("Call Center", "Inbound", "Employee")</li>
+                            
+@*                            <li>@Html.ActionLink("work History", "PendingEmployees", "Office")</li>*@
+                        }
+
+                        if (!isOfficeOwner && !isEmployee)
+                        {
+                        <li>@Html.ActionLink("Employee Registration", "EmployeeRegistration", "Employee")</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Help", "About", "Home")</li>
+
+
+                    }
+
+                </ul>
+
+            </div>
+            <aside id="left-side" class="right-side">
+
+                @*   @if (WebSecurity.IsAuthenticated)
+                {
+
+                    var isOfficeOwner = Roles.IsUserInRole("OfficeOwner");
+                    var isEmployee = Roles.IsUserInRole("Employee");
+                    if (isOfficeOwner)
+                    {
+                        @Html.Action("EmployeeListPartial", "Office");
+                    }
+
+                }*@
+            </aside>
+            <div class="col-xs-6 col-md-8  main-body">
+
+                @RenderSection("featured", required: false)
+                <section class="animated fadeIn">
+                    @RenderBody()
+                </section>
+
+
+            </div>
+
+        </div>
+
+        @RenderSection("scripts", required: false)
+    </div>
+    @if (Roles.IsUserInRole("Employee"))
+    {
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <p>this is Inbound. It will show how it works...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <p>This is Outbound. It will show the direction</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <p>It will help</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+
+    <footer style="position: inherit; margin-left: 320px; bottom: 0px;">
+        <div class="content-wrapper">
+            <div class="float-left">
+                <span class="ng-scope">Copyright © 2015 Icebreakers Admin</span>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
+<script>
+    var x = $(window).height();
+    console.log(x);
+    document.getElementById("fixed-side-bar").style.height = x + 'px';
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#toggle-side").click(function () {
+            $("#left-side").toggle();
+        });
+    });
+    $('#toggle').click(function () {
+        $(".fa-toggle-on,.fa-toogle-off").toggleClass("fa-toggle-on fa-toggle-off");
+        //$(this).toggleClass('fa-toggle-on fa-toogle-off');
+    });
+</script>

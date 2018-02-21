@@ -1,0 +1,107 @@
+﻿@using Office_Management.Models
+@model IEnumerable<Office_Management.Models.CallRegReportGenerateVMforAll>
+
+@{
+    ViewBag.Title = "CallRegReportGenerateVM";
+    var newfrom = ViewBag.from;
+    var newto = ViewBag.to;
+    var newcallertype = ViewBag.callerTypeId;
+    var datacount = ViewBag.dataCount;
+    var callerTypeName = ViewBag.callerTypeName;
+}
+
+<h2>CallRegReportGenerateVM</h2>
+
+<p>
+    Total Call : @datacount for  @callerTypeName
+</p>
+<div class="" style=" font-size: 18px; font-weight: 700; margin-bottom: 10px;"> Report :</div>
+    <table class="table table-bordered table-hover table-stripped ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CallerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            
+            @foreach (var item in Model)
+            {
+                
+                if (item.ComplainType != null)
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.ComplainType)
+                    </th>
+                    break;
+                }
+                else if (item.QueryType != null)
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.QueryType)
+                    </th>
+                break;
+                    
+                } 
+                else if (item.Email != null)
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    break;
+                }
+            }
+           
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CallerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @if (item.ComplainType != null)
+            {
+                <td>
+                @Html.DisplayFor(modelItem => item.ComplainType)
+            </td>
+            }
+            else if (item.QueryType != null)
+            {
+                <td>
+                @Html.DisplayFor(modelItem => item.QueryType)
+            </td>
+            }
+            else if (item.Email != null)
+            {
+                <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td> 
+            }
+        </tr>
+    }
+
+</table>
+
+
+
+    <form action="~/Office/ExportReportToExcel">
+        <input name="from" value="@ViewBag.from" type="hidden" />
+        <input name="to" value="@ViewBag.to" type="hidden" />
+        <input name="callerTypeId" value="@ViewBag.callerTypeId" type="hidden"/>
+        <input name="count" value="@ViewBag.dataCount" type="hidden" />
+        <input class="btn btn-info" type="submit" value="Export">
+
+    </form>
+
+
+

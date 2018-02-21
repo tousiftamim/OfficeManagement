@@ -1,0 +1,30 @@
+﻿@using Office_Management.Controllers
+@model IEnumerable<Office_Management.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Please Approve Your Required Clint</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName) <a href="Administrator/Approve?userId=@item.UserId">Approve</a>
+             <a href="Administrator/Delete?userId=@item.UserId">Delete</a>
+
+
+        </td>
+       
+    </tr>
+}
+
+</table>

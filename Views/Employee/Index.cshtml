@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home";
+    
+    //this is for getting username.
+//    var name = Membership.GetUser().UserName;
+    var name = WebSecurity.CurrentUserName;
+    
+    //this is for getting userId.
+    int UserID = WebSecurity.CurrentUserId;
+
+}
+
+<h2>Welcome to the office. </h2>
+Hello <b>@name</b>, thanks for your contribution. We need your necessary effort.
+<br><br>
+<h3>Instruction</h3>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Inbound</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Outbound</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Help</button>
+
+  <!-- Modal -->
+  
+    
+  
+</div>

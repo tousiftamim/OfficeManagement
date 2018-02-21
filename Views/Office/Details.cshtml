@@ -1,0 +1,70 @@
+﻿@model Office_Management.Models.ViewModel.CallHistoryViewModel
+@{
+    ViewBag.Title = "Details";
+}
+@Html.ActionLink("Edit Information", "EditCallHistory", "Employee", Model, null)
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Name</th>
+        <td>@Model.CallerName</td>
+    </tr>
+    <tr>
+        <th>Mobile Number </th>
+        <td>@Model.MobileNumber</td>
+    </tr>
+    <tr>
+        <th>Description </th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Calling Time</th>
+        <td>@Model.Time</td>
+    </tr>
+    <tr>
+        <th>Call Type  </th>
+        <td>@Model.CallTypeName</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <th>Order Code </th>
+        <td>@Model.OrderCode</td>
+    </tr>
+    <tr>
+        <th>Product Code</th>
+        <td>@Model.ProductCode</td>
+    </tr>
+    <tr>
+        <th>Complain Type</th>
+        <td>@Model.ComplainType</td>
+    </tr>
+    <tr>
+        <th>Query Type</th>
+        <td>@Model.QueryType</td>
+    </tr>
+    <tr>
+        <th>User Name</th>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <th>Calling Status Id</th>
+        <td>@Model.CallingStatusId</td>
+    </tr>
+     <tr>
+        <th>Office Owner Id</th>
+        <td>@Model.OfficeOwnerId</td>
+    </tr>
+    <tr>
+        <th>Job Category Id</th>
+        <td>@Model.JobCategoryId</td>
+    </tr>
+    <tr>
+        <th>Remarks</th>
+        <td>@Model.AdminComment</td>
+    </tr>
+
+
+</table><br>
+

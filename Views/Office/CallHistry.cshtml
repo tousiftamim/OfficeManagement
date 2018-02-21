@@ -1,0 +1,33 @@
+﻿@model List<Office_Management.Models.CallRegistration>
+
+@{
+    ViewBag.Title = "CallHistry";
+}
+
+<div class="card-heading ">
+    <h3>
+        <i class="fa fa-x fa-phone"></i> Call History
+    </h3>
+</div>
+
+<table class="table table-bordered table-stripped table-hover">
+
+    <tr>
+        <th>Caller Name</th>
+        <th>Mobile Number</th>
+        <th>Description</th>
+        <th>Calling Time</th>
+    </tr>
+@foreach (var callHistory in Model)
+    {
+        <tr>
+            <td>@callHistory.CallerName</td>
+            <td>@callHistory.MobileNumber</td>
+            <td>@callHistory.Description</td>
+            <td>@callHistory.Time</td>
+            <td>@Html.ActionLink("Details", "Details", new {id = callHistory.Id})</td>
+        </tr>
+   }
+
+</table>
+

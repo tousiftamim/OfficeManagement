@@ -1,0 +1,29 @@
+﻿@model Office_Management.Models.EmployeeProfile
+
+@{
+    ViewBag.Title = "EmployeeProfile";
+}
+
+<h2>EmployeeProfile</h2>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <form action="EmployeeProfile" method="POST" enctype="multipart/form-data">
+
+        <div> Upload Image </div>
+        <input type="file" name="file" id="file" style="width: 100%;" />
+        Full Name: <input class="form-control" type="text" name="FullName" required="" />
+        Address: <input class="form-control" type="text" name="Address" required="" />
+        Email Address: <input class="form-control" type="text" name="Email" required="">
+        <input type="submit" value="Submit" class="btn btn-success" />
+
+
+
+
+    </form>
+
+    
+</body>
+</html>

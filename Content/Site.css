@@ -1,0 +1,299 @@
+﻿@font-face {
+    font-family: RobotoDraft;
+    src: url('../Content/dist/fonts/RobotoDraftBold.woff'), url('../Content/dist/fonts/RobotoDraftBold.woff2');
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../Content/dist/fonts/RobotoDraftMedium.woff'), url('../Content/dist/fonts/RobotoDraftMedium.woff2');
+}
+
+
+body {
+    background: #eeeeee;
+    font-family: "Roboto","RobotoDraft",  "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.header-panel {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    background-color: rgb(66, 133, 244);
+    height: 70px;
+    position: relative;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    will-change: transform, background-color;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    position: fixed;
+    z-index: 11;
+    width: 100%;
+    padding-right: 10px;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 15px 0;
+}
+
+    .header-panel a {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        color: white;
+    }
+
+.menu {
+    overflow: auto;
+    padding: 0;
+    position: fixed;
+    z-index: 2;
+    background-color: #fff;
+    box-shadow: 0 8px 7px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+    margin-top: 1px;
+    width: 268px;
+}
+
+    .menu ul {
+        padding: 0;
+        margin: 7px 0;
+    }
+
+        .menu ul li.active {
+            background-color: #dedede;
+            position: relative;
+        }
+
+        .menu ul li {
+            padding: 14px 20px 14px 22px;
+            display: block;
+            color: #4C4C4C;
+            font-weight: 500;
+            position: relative;
+            transition: .5s all ease-in-out;
+        }
+
+  .main-menu a, a:hover,a:focus {
+        color: #4C4C4C !important;
+      text-decoration: none;
+    }
+
+    .menu ul li:hover {
+        background-color: #eeeeee;
+    }
+
+    .menu, .menu * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+* {
+    box-sizing: border-box;
+}
+
+.main-body {
+    min-height: 579px;
+    margin-top: 80px;
+    margin-left: 320px;
+    min-height: 579px;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    padding: 40px;
+}
+
+.userprofile {
+    background: url('../Content/dist/image/4.png') no-repeat;
+    background-size: 268px 119px;
+    width: 268px;
+    height: 119px;
+}
+
+.anchor-done a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.right-side {
+    position: fixed;
+    background: #fff;
+    margin-top: 6px;
+    padding: 20px 0;
+    width: 260px;
+    box-shadow: 0 0 10px rgba(51,51,51,0.38);
+    height: calc(100% - 65px);
+    right: 0;
+    top: 65px;
+    -webkit-transition: all;
+    -o-transition: all;
+    transition: all;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    z-index: 3;
+    /* opacity: 0; */
+    display: none;
+    filter: alpha(opacity=0);
+    transition: .5s all ease-in-out;
+}
+
+.header-inner {
+    list-style: none;
+    padding: 15px 0;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 9px;
+}
+
+.top-menu {
+    list-style: none;
+    padding: 10px;
+    margin-top: -45px;
+    transition: .5s all ease-in-out;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.top-menu > li {
+    display: inline-block;
+    margin: 0 1px;
+    padding: 5px;
+    transition: .5s all ease-in-out;
+}
+
+    .top-menu > li > a {
+        height: 35px;
+        min-width: 50px;
+        display: inline-block;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        z-index: 1;
+        padding-left: 16px;
+        padding-top: 4px;
+        font-size: 20px;
+    }
+
+ul .top-menu > li:hover {
+    backface-visibility: hidden;
+    background-color: rgba(0,0,0,0.12);
+    z-index: 0;
+    border-radius: 2px;
+}
+
+
+.card {
+    position: relative;
+    background: #efefef;
+    border: 1px solid #efefef;
+    box-shadow: none ;
+    transition: .5s all ease-in-out;
+   
+}
+.card-task:hover{
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+}
+.card-header:not(.ch-alt) {
+    padding: 23px 25px;
+}
+.card-header {
+    position: relative;
+    color: #fff;
+    font-size: 18px;
+}
+.bgm-cyan {
+    background-color: #00bcd4!important;
+}
+.card-body.card-padding {
+    padding: 23px 25px;
+}
+.card-header[class*="bgm-"] h2, .card-header[class*="bgm-"] h2 small {
+    color: #fff;
+}
+.card-header h2 {
+    margin: 0;
+    line-height: 100%;
+    font-size: 17px;
+    font-weight: 400;
+     text-transform: capitalize;
+}
+.card-heading {
+        background-color: #FF5722!important;
+    width: 100%;
+    min-height: 40px;
+    padding: 23px 25px;
+    color: #fff;
+    font-size: 18px;
+}
+.task-dexc {
+    background: #efefef;
+    padding: 23px 25px;
+    color: #777;
+    
+    width: 100%;
+    height: 100px; 
+}
+.card-task {
+    
+    width: 100%;
+    min-height: 40px;
+    padding: 23px 25px;
+ transition: .5s all ease-in-out;
+    font-size: 16px;
+    border-bottom: 1px solid #f2eeee;
+
+}
+.pp {
+    float: left;
+    height: 60px;
+    width: 60px;
+
+}
+.pp img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+.media-body {
+    zoom: 1;
+    display: block;
+    width: auto;
+    padding: 5px;
+    
+}
+.employee-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.employee-card {
+    padding: 12px 20px; width: 260px; margin-left: 0px;
+    transition: .5s all ease-in-out;
+    border-bottom: 1px solid #efefef;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+.employee-card:hover {
+    background: #efefef;
+}
+.btn-custom-edit {
+   width: 40px ;
+    height: 40px;
+    background: #4285F4;
+    color: #fff;
+    font-size: 18px;
+}

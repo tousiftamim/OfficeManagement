@@ -1,0 +1,38 @@
+﻿@using Office_Management.Models
+@model IEnumerable<Office_Management.Models.OutboundCallReg>
+@{
+    ViewBag.Title = "SetOutboundCall";
+    var EmpList = ViewBag.empList as List<EmpListByCallRegistrationVM>;
+    
+}
+
+<h2>SetOutboundCall</h2>
+
+<form name="" method="post">
+@*        <input name="OfficeId" value="@ViewBag.getOfficeId" type="hidden" />*@
+
+    Name
+    <input class="form-control" type="text" name="Name" required="" placeholder="John Doe">
+    <br />
+    Mobile Number
+    <input class="form-control" type="text" name="PhoneNumber" required="" placeholder="01xxxxx">
+
+    Reason For Calling
+    <input class="form-control" type="text" name="Reason" required="">
+    <br/>
+    Select Employee
+    <select name="AssignerId" class="form-control">
+        @if (EmpList != null)
+        {
+            foreach (var emp in EmpList)
+            {
+                <option value="@emp.Id">@emp.Name</option>
+
+            }
+        }
+
+    </select>
+
+    <input class="btn btn-info" type="submit" value="Submit">
+</form>
+

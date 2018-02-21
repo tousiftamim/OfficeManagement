@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Office_Management.Models.ViewModel.PendingEmployee>
+
+@{
+    ViewBag.Title = "PendingEmployees";
+}
+
+<h2>PendingEmployees</h2>
+
+<table class="table table-bordered table-hover table-stripped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfficeName)
+        </td>
+        <td>
+            @Html.ActionLink("Approve", "Approve", new {userId = item.UserId}) 
+@*            @Html.ActionLink("Details", "Details", new {id = item.UserId}) |*@
+            @Html.ActionLink("Delete", "Delete", new {id = item.UserId})
+        </td>
+    </tr>
+}
+
+</table>

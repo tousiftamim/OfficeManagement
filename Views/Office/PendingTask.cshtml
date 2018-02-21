@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Office_Management.Models.PendingTaskVM>
+<style>
+    .main-body {
+        min-height: 579px;
+        margin-top: 80px;
+        margin-left: 320px;
+        min-height: 579px;
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+        padding: 0;
+    }
+</style>
+
+
+<div class="card-heading ">
+    <h3>
+        <i class="fa fa-x fa-tasks"></i> Pending Tasks
+    </h3>
+</div>
+
+@foreach (var item in Model)
+{
+
+    
+
+    <div class="card-task ">
+        <div class="form-group">
+            <div class="checkbox checkbox-primary" style="text-transform: capitalize">
+                <label>
+                    <input id="ch3" type="checkbox"><span class="checkbox-material"><span class="check"></span></span> &nbsp; &nbsp;@Html.DisplayFor(modelItem => item.TaskName)
+                </label>
+            </div>
+            <p class="help-block">@Html.DisplayFor(modelItem => item.TaskDescription)</p>
+        </div>
+        <div class="row">
+            <div class="btn btn-sm btn-default btn-raised btn-white">
+                <i class="fa fa-calendar "></i> @Html.DisplayFor(modelItem => item.TaskDeadline)
+            </div>
+            <div class="btn btn-sm btn-default btn-raised btn-white">
+                <i class="fa fa-user "></i> @Html.DisplayFor(modelItem => item.EmployeeName)
+            </div>
+            <div class="btn btn-sm btn-default btn-raised btn-white">
+                <i class="fa fa-building"></i> @Html.DisplayFor(modelItem => item.OfficeName)
+            </div>
+        </div>
+    </div>
+}

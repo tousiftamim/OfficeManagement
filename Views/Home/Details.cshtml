@@ -1,0 +1,121 @@
+﻿@model Office_Management.Models.ViewModel.CallHistoryViewModel
+@{
+    ViewBag.Title = "Details";
+}
+@Html.ActionLink("Update Information", "UpdateCallHistory", "Home", Model, null)<br/>
+
+@if (Roles.IsUserInRole("Admin") || Roles.IsUserInRole("OfficeOwner"))
+    {
+        <p>
+           <b> @Model.UserName</b> has received call from <b>@Model.CallerName</b> on @Model.Time 
+        </p>
+    }
+<table class="table table-bordered table-hover">
+
+    @if (Roles.IsUserInRole("Admin") || Roles.IsUserInRole("OfficeOwner"))
+    {
+         <tr>
+            <th>Call Duration</th>
+            <td>@Model.CallDuration</td>
+        </tr>
+    }
+
+    @if (Roles.IsUserInRole("Employee"))
+    {
+        <tr>
+            <th>Name</th>
+            <td>@Model.CallerName</td>
+        </tr>
+        <tr>
+            <th>Calling Time</th>
+            <td>@Model.Time</td>
+        </tr>
+    }
+    <tr>
+        <th>Mobile Number </th>
+        <td>@Model.MobileNumber</td>
+    </tr>
+    <tr>
+        <th>Call Type </th>
+        <td>@Model.CallTypeName</td>
+    </tr>
+    @if (@Model.ComplainType != null)
+    {
+        <tr>
+            <th>Complain Type</th>
+            <td>@Model.ComplainType</td>
+        </tr>
+    }
+    @if (@Model.QueryType != null)
+    {
+        <tr>
+            <th>Query Type</th>
+            <td>@Model.QueryType</td>
+        </tr>
+    }
+    @if (@Model.PaymentMethod != null)
+    {
+        <tr>
+            <th>Payment Method</th>
+            <td>@Model.PaymentMethod</td>
+        </tr>
+    }
+    @if (@Model.AdminComment != null)
+    {
+        <tr>
+            <th>Remarks</th>
+            <td>@Model.AdminComment</td>
+        </tr>
+    }
+    @if (@Model.Description != null)
+    {
+        <tr>
+            <th>Description </th>
+            <td>@Model.Description</td>
+        </tr>
+    }
+
+    @if (@Model.CallerEmail != null)
+    {
+        <tr>
+            <th>Caller Email</th>
+            <td>@Model.CallerEmail</td>
+        </tr>
+    }
+    @if (@Model.Address != null)
+    {
+        <tr>
+            <th>Address</th>
+            <td>@Model.Address</td>
+        </tr>
+    }
+    @if (@Model.OrderCode != null)
+    {
+        <tr>
+            <th>Order Code </th>
+            <td>@Model.OrderCode</td>
+        </tr>
+    }
+    @if (@Model.ProductCode != null)
+    {
+        <tr>
+            <th>Product Code</th>
+            <td>@Model.ProductCode</td>
+        </tr>
+    }
+    
+    
+@*<tr>
+        <th>Calling Status Id</th>
+        <td>@Model.CallingStatusId</td>
+    </tr>
+    <tr>
+        <th>Office Owner Id</th>
+        <td>@Model.OfficeOwnerId</td>
+    </tr>
+    <tr>
+        <th>Job Category Id</th>
+        <td>@Model.JobCategoryId</td>
+    </tr>*@
+</table>
+

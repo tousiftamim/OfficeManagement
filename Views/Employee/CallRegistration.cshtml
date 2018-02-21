@@ -1,0 +1,154 @@
+﻿@using System.Collections.Generic
+@using Office_Management.Models
+
+
+@model System.Collections.Generic.IEnumerable<Office_Management.Models.CallRegistration>
+@{
+    ViewBag.Title = "CallRegistration";
+    var callerTypes = ViewBag.callerTypes as List<CallType>;
+    var callingStatuses = ViewBag.callingStatuses as List<CallingStatus>;
+    var officeOwners = ViewBag.officeOwnerId as List<OfficeInfo>;
+//    ViewBag.callingStartTime = ViewBag.callingStartTime;
+
+}
+
+
+<div class="EHHeader" style="height: 120px; background-color: #8BC34A; padding-top: 35px; display: block;">
+    <div class="row">
+        <div class="EHSubHeader">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <h4>Logo </h4>
+            </div>
+            <div class="col-md-4">
+                <h5>Kinbokoi Work Management System</h5>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="width: 100%; padding-right: 0px; padding-left: 0px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="content">
+                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                    
+                    @foreach (var callerType in callerTypes)
+                    {
+                        <li><a href="#@callerType.CallTypeName" onclick="tabOnClick(@callerType.Id)" data-toggle="tab">@callerType.CallTypeName</a></li>
+                    }
+                    <li>@Html.ActionLink("REFRESH", "CallRegistration", "Employee")</li>
+
+                </ul>
+                <br />
+
+                <form name="myForm" action="" method="POST">
+
+                    <input name="OfficeOwnerId" value="@ViewBag.officeOwnerId" type="hidden"/>
+
+                    Caller Name
+                    <input class="form-control" type="text" name="CallerName" required="" placeholder="John Doe">
+                    <br/>
+                    Mobile Number
+                    <input class="form-control" type="tel" pattern="[0-9]{11}" name="MobileNumber" required="" placeholder="01xxxxx">
+                    <br/>
+
+                    <div id="my-tab-content" class="tab-content">
+                        <div class="tab-pane" id="ORDER">
+                            Product Code:
+                            <input type="text" class="form-control" name="ProductCode" placeholder="code"/><br/>
+
+                            Delivery Date:
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" name="DeliveryDate"/>
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function() {
+                                        $('#datetimepicker1').datetimepicker();
+                                    });
+                                </script>
+                            </div>
+                            <br/>
+
+                            Address
+                            <textarea class="form-control" name="Address" placeholder="bari koi"></textarea><br/>
+
+                            Payment Method
+                            <select class="form-control" name="PaymentMethod">
+                                <option value="">Select Type...</option>
+                                <option value="cash">On Cash</option>
+                                <option value="BCash">BCash</option>
+                                <option value="DBBL">DBBL</option>
+                            </select><br/>
+
+                            Caller Email
+                            <input type="email" name="CallerEmail" class="form-control" placeholder="example@gmail.com"/><br>
+                        </div>
+
+                        <div class="tab-pane" id="COMPLAIN">
+                            Select Complain Type
+                            <select class="form-control" name="ComplainType">
+                                <option value="">Select Type</option>
+                                <option value="delivery">Delivery Related</option>
+                                <option value="refund">Refund Related</option>
+                                <option value="other">Other</option>
+                            </select><br/>
+                            Order Code:
+                            <input class="form-control" type="text" name="OrderCode">
+                            <br/>
+                            Caller Email
+                            <input type="email" name="CallerEmail" class="form-control" placeholder="example@gmail.com"/><br>
+                        </div>
+
+                        <div class="tab-pane" id="QUERY">
+                            Query Type
+                            <select class="form-control" name="QueryType">
+                                <option value="">Select Type</option>
+                                <option value="product">ProductRelated</option>
+                                <option value="delivery">DeliveryRelated</option>
+                                <option value="other">Other</option>
+                            </select><br/>
+                        </div>
+
+                        <div class="tab-pane" id="OTHER">
+                        </div>
+                    </div>
+                    Description
+                    <textarea class="form-control" type="text" name="Description" placeholder="details"></textarea><br/>
+                    Remarks
+                    <textarea class="form-control" type="text" name="AdminComment"></textarea><br/>
+
+                    <div id="typeChecking" style="color: red"></div>
+                    <input type="hidden" name="CallTypeId" id="callType"/>
+                    <input type="hidden" name="CallDuration" value="@ViewBag.callingStartTime"/>
+
+                    <input class="btn btn-info" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('#tabs').tab();
+        });
+        function tabOnClick(id) {
+            if (id == 0) {
+                document.getElementById("typeChecking").innerHTML = "You must click any call type !!";
+            }
+            document.getElementById("callType").value = id;
+        }
+
+    </script>
+</div>

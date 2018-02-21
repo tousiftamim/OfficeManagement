@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Successfull";
+    var lastCall = ViewBag.callReg;
+}
+
+<h3>You have successfully registered the following call</h3>
+
+<table class="table table-bordered table-stripped table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Description</th>
+        <th>Remark</th>
+    </tr>
+    <tr>
+        <td>@lastCall.CallerName</td>
+        <td>@lastCall.MobileNumber</td>
+        <td>@lastCall.Description</td>
+        <td>@lastCall.AdminComment</td>
+    </tr>
+
+</table>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Office_Management.Models.UserProfile>
+@{
+    ViewBag.Title = "Home";
+}
+<p>
+    @Html.ActionLink("Create New Employee", "Register")
+</p>
+
+<table class="table table-bordered table-hover table-stripped">
+    <thead>
+    <td>
+        Employee Name
+    </td>
+    <td>
+        Set task
+    </td>
+    </thead>
+    @foreach (var list in Model)
+    {
+        <tr>
+            <td>@list.UserName</td>
+            <td><a href="/Office/SetTask?empId=@list.UserId">
+                    <button class="btn btn-fab btn-raised btn-material-yellow-400"><i class="mdi-image-edit"></i></button>
+            </a></td>
+        </tr>
+
+    }
+</table>

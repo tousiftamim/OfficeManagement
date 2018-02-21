@@ -1,0 +1,30 @@
+﻿@model IList<Office_Management.Models.ViewModel.OfficeViewModel>
+@{
+    ViewBag.Title = "OfficeOwnerHome";
+}
+
+
+<h2>OfficeOwnerHome</h2>
+
+<table class="table table-bordered table-hover table-stripped">
+    <tr>
+        <td>Office Name</td>
+        <td>number Of employees</td>
+        <td>Click to see All</td>
+    </tr>
+   
+        @foreach (var list in Model)
+    
+        {
+<tr>
+        <td>@list.OfficeName</td>
+        <td>@list.EmployeeCount</td>
+        <td><a href="/Office/IndivisualOfficeEmployeeList?officeId=@list.OfficeId"><button class="btn btn-fab btn-fab-mini btn-raised btn-material-green-600"><i class="mdi-navigation-arrow-forward"></i></button></a>
+</td>
+
+    </tr>
+
+        }
+    
+    
+</table>

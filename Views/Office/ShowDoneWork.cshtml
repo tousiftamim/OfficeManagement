@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Office_Management.Models.TaskInfoVM>
+@{
+    ViewBag.Title = "ShowDoneWork";
+}
+<div class="" style=" font-size: 18px; font-weight: 700; margin-bottom: 10px;">Employees Done work List</div>
+        <table class="table table-bordered table-hover table-stripped ">
+            <tr>
+                <th>
+                    Task ID
+                </th>
+                <th>
+                    Task Name
+                </th>
+                <th>
+                    Task Description
+                </th>
+                <th>
+                    Deadline
+                </th>
+
+                <th>
+                    Employee Id
+                </th>
+
+                <th>
+                    Employee Name
+                </th>
+                <th>
+                    Office Name
+                </th>
+                <th>
+                    Approval
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskDeadline)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfficeName)
+                    </td>
+                    @if (item.IsAccept)
+                    {
+                        <td>
+                            <a href="/Office/IsAcceptDoneWork?taskId=@item.Id">Accepted</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a href="/Office/IsAcceptDoneWork?taskId=@item.Id">Accept</a>
+                        </td>
+                    }
+
+
+                </tr>
+            }
+
+        </table>
+ 

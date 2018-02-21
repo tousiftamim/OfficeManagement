@@ -1,0 +1,123 @@
+﻿@model Office_Management.Models.ViewModel.CallHistoryViewModel
+@{
+    ViewBag.Title = "UpdateCallHistory";
+    //string orderCode = Model.OrderCode;
+    //if (Model.OrderCode == null)
+    //{
+    //    orderCode = "You must specify the order code";
+    //}
+}
+
+<h2>Update Call History</h2>
+<br>
+@using (Html.BeginForm("ConfirmCallHistory", "Home"))
+{
+    @Html.HiddenFor(_ => _.Id)
+    if (@Model.CallTypeName == "ORDER")
+    {
+    <i>
+        <label>Order Code </label>
+    </i>
+    <input class="form-control" type="text" name="OrderCode" value="@Model.OrderCode" placeholder="You must specify the order code for an order"/><br />
+    }
+    
+    <label>Name </label>
+    <input class="form-control" type="text" name="CallerName" value="@Model.CallerName"/><br />
+
+@*<label>Mobile</label>
+    <input class="form-control" type="text" name="MobileNumber" value="@Model.MobileNumber"/><br/>*@
+    
+    <label>Remarks</label>
+    <input class="form-control" type="text" name="AdminComment" value="@Model.AdminComment"/><br />
+    
+    <label>Description </label>
+    <input class="form-control" type="text" name="Description" value="@Model.Description"/><br />
+    
+    if (@Model.CallerEmail != null)
+    {
+    <label>Caller Email</label>
+    <input class="form-control" type="text" name="CallerEmail" value="@Model.CallerEmail"/><br />
+    }
+    
+@*<label>Call Type </label>
+    <select class="form-control" name="CallTypeId">
+        <option value="@Model.CallTypeId">@Model.CallTypeName</option>
+        <option value="10">ORDER</option>
+        <option value="11">COMPLAIN</option>
+        <option value="12">QUERY</option>
+        <option value="13">OTHER</option>
+    </select>*@
+    
+    if (@Model.Address != null)
+    {
+    <label>Address</label>
+    <input class="form-control" type="text" name="Address" value="@Model.Address"/><br />
+    }
+    if (@Model.PaymentMethod != null)
+    {
+    <label>Payment Method</label>
+    <select class="form-control" name="PaymentMethod">
+        <option value="@Model.PaymentMethod">@Model.PaymentMethod</option>
+    </select><br />
+    }
+    if (@Model.ComplainType != null)
+    {
+    <label>Complain Type</label>
+    <select class="form-control" name="ComplainType">
+        <option value="@Model.ComplainType">@Model.ComplainType</option>
+    </select><br />
+    }
+    if (@Model.QueryType != null)
+    {
+    <label>Query Type</label>
+    <select class="form-control" name="QueryType">
+        <option value="@Model.QueryType">@Model.QueryType</option>
+    </select><br />
+    }
+    
+
+@*<label>Order Code</label>
+    <input class="form-control" type="text" name="OrderCode" value="@Model.OrderCode"/><br />
+    
+    <label>Product Code </label>
+    <input class="form-control" type="text" name="ProductCode" value="@Model.ProductCode"/><br />
+
+    <label>Payment Method</label>
+    <select class="form-control" name="PaymentMethod">
+        <option value="@Model.PaymentMethod">@Model.PaymentMethod</option>
+        <option value="cash">On Cash</option>
+        <option value="BCash">BCash</option>
+        <option value="DBBL">DBBL</option>
+    </select><br />
+
+    <label>Complain Type</label>
+    <select class="form-control" name="ComplainType">
+        <option value="@Model.ComplainType">@Model.ComplainType</option>
+        <option value="delivery">Delivery Related</option>
+        <option value="refund">Refund Related</option>
+        <option value="other">Other</option>
+    </select><br />
+
+    <label>Query Type</label>
+    <select class="form-control" name="QueryType">
+        <option value="@Model.QueryType">@Model.QueryType</option>
+        <option value="product">ProductRelated</option>
+        <option value="delivery">DeliveryRelated</option>
+        <option value="other">Other</option>
+    </select><br />*@
+
+@*<label>Calling Status Id</label>
+    <input class="form-control" type="text" name="CallingStatusId" value="@Model.CallingStatusId"/><br />
+    
+    <label>Office Owner Id</label>
+    <input class="form-control" type="text" name="OfficeOwnerId" value="@Model.OfficeOwnerId"/><br />
+
+    <label>Job Category Id</label>
+    <input class="form-control" type="text" name="JobCategoryId" value="@Model.JobCategoryId"/><br />*@
+    
+    
+    
+    <input class="btn btn-info" type="submit" value="Update" />
+}
+
+

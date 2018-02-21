@@ -1,0 +1,59 @@
+﻿@model Office_Management.Models.ViewModel.CallHistoryViewModel
+@{
+    ViewBag.Title = "EditCallHistory";
+}
+
+<h2>Edit Call History</h2>
+
+@using (Html.BeginForm("ConfirmCallHistory", "Employee"))
+{
+    @Html.HiddenFor(_ => _.Id)
+    <label>Name </label>
+    <input class="form-control" type="text" name="CallerName" value="@Model.CallerName"/><br/>
+
+    <label>Mobile</label>
+    <input class="form-control" type="text" name="MobileNumber" value="@Model.MobileNumber"/><br/>
+    
+    <label>Description </label>
+    <input class="form-control" type="text" name="Description" value="@Model.Description"/><br/>
+
+    <label>Calling Time</label>
+    <input class="form-control" type="text" name="Time" value="@Model.Time"/><br/>
+    
+    <label>Call Type </label>
+    <input class="form-control" type="text" name="CallTypeName" value="@Model.CallTypeName"/><br/>
+    
+    <label>Address</label>
+    <input class="form-control" type="text" name="Address" value="@Model.Address"/><br/>
+
+    <label>Order Code</label>
+    <input class="form-control" type="text" name="OrderCode" value="@Model.OrderCode"/><br/>
+    
+    <label>Product Code </label>
+    <input class="form-control" type="text" name="ProductCode" value="@Model.ProductCode"/><br/>
+
+    <label>Complain Type</label>
+    <input class="form-control" type="text" name="ComplainType" value="@Model.ComplainType"/><br/>
+    
+    <label>Query Type</label>
+    <input class="form-control" type="text" name="QueryType" value="@Model.QueryType"/><br/>
+    
+    <label>User Name</label>
+    <input class="form-control" type="text" name="UserName" value="@Model.UserName"/><br/>
+
+    <label>Calling Status Id</label>
+    <input class="form-control" type="text" name="CallingStatusId" value="@Model.CallingStatusId"/><br/>
+    
+    <label>Office Owner Id</label>
+    <input class="form-control" type="text" name="OfficeOwnerId" value="@Model.OfficeOwnerId"/><br/>
+
+    <label>Job Category Id</label>
+    <input class="form-control" type="text" name="JobCategoryId" value="@Model.JobCategoryId"/><br/>
+    
+    <label>Remarks</label>
+    <input class="form-control" type="text" name="AdminComment" value="@Model.AdminComment"/><br/>
+    
+    <input type="submit" />
+}
+
+

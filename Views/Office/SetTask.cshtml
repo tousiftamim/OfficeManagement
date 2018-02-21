@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Office_Management.Models.TaskInfo>
+@{
+    ViewBag.Title = "SetTask";
+}
+
+<h2>SetTask for @ViewBag.profile.UserName</h2>
+
+
+<form action="settask" method="POST">
+    <input type="hidden" name="empId" value="@ViewBag.profile.UserId" />
+    Task Name: <input class="form-control" type="text" name="TaskName" required="">
+    <br />
+    Task Description: <textarea class="form-control"  type="text" name="TaskDescription" required=""></textarea>
+    <br />
+    Deadline: <input class="form-control"  type="datetime-local" name="TaskDeadline" required="">
+    <br/>
+    <input class="btn btn-info" type="submit" value="Submit">
+</form>
+
+<ul>
+    @foreach (var task in Model)
+    {
+        <li>@task.TaskDescription</li>
+    }
+</ul>

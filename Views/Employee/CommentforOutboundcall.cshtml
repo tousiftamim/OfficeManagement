@@ -1,0 +1,42 @@
+﻿@using System.Collections.Generic
+@using Office_Management.Models
+@model OutboundCallReg
+@{
+    ViewBag.Title = "CommentforOutboundcall";
+    var callingStatuses = ViewBag.callingStatuses as List<CallingStatus>;
+    string status;
+    if (@Model.CallingStatusId == 0)
+    {
+        status = "Not Yet Commented";
+    }
+    else
+    {
+        CallingStatus row = callingStatuses.FirstOrDefault(callingStatus => callingStatus.Id == @Model.CallingStatusId);
+        status = row.Status;
+    }
+
+}
+<h2>Comment for Outboundcall</h2>
+<p>You can see this comment or edit it.</p>
+
+<form name="" method="post">
+    Comment
+    <input class="form-control" type="text" name="AssignerComment" value="@Model.AssignerComment" placeholder="@status">
+    <input type="hidden" name="Id" value="@Model.Id"/>
+    <br/>
+
+    Calling Status
+    <select class="form-control" name="CallingStatusId">
+        <option value="@Model.CallingStatusId">@status</option>
+        @if (callingStatuses != null)
+        {
+            foreach (var callingStatus in callingStatuses)
+            {
+            <option value="@callingStatus.Id">@callingStatus.Status</option>
+            }
+        }
+    </select><br>
+
+    <input class="btn btn-info" type="submit" value="Ok">
+</form>
+

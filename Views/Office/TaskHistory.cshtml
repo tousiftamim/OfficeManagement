@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Office_Management.Models.TaskHistory>
+
+@{
+    ViewBag.Title = "TaskHistory";
+}
+
+<h2>TaskHistory</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskDeadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfficeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskDeadline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfficeName)
+        </td>
+      
+    </tr>
+}
+
+</table>
+

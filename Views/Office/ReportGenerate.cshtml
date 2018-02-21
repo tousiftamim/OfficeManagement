@@ -1,0 +1,71 @@
+﻿ @using Office_Management.Models
+
+@{
+    ViewBag.Title = "ReportGenerate";
+    var callerTypes = ViewBag.callerTypes as List<CallType>;
+}
+
+<div class="card-heading alert-material-yellow-A400" style=" background-color: #ffea00 !important; color: rgba(0,0,0,.84);">
+    <h3>
+        <i class="fa fa-x fa-tasks"></i> Generate Report
+    </h3>
+</div>
+</br>
+<form action="" method="POST" >
+    Select call type:
+    <select name="CallerTypeId" class="form-control">
+        @if (callerTypes != null)
+        {
+            foreach (var callerType in callerTypes)
+            {
+                <option value="@callerType.Id">@callerType.CallTypeName </option>
+
+            }
+        }
+
+    </select>
+
+    From:
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="From" required="" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+
+    <br/>
+    To:
+    
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                    <input type='text' class="form-control" name="To" required=""/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker();
+            });
+        </script>
+    </div>
+
+    <br />
+    <input class="btn btn-info" type="submit" value="Submit">
+</form>
+

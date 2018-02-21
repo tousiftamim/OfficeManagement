@@ -1,0 +1,33 @@
+﻿@model System.Collections.Generic.IEnumerable<Office_Management.Models.CallHistryVM
+@{
+    ViewBag.Title = "My Call History";
+}
+
+<h2>My Call History</h2>
+
+<table class="table table-bordered table-stripped table-hover">
+   <tr>
+        <th>Caller Name</th>
+        <th>Mobile Number</th>
+        <th>Address</th>
+        <th>Description</th>
+        <th>Call type name</th>
+        <th>Order Code</th>
+        <th>Payment Method</th>
+    </tr>
+
+    @foreach (var callHistory in Model)
+    {
+        <tr>
+            <td>@callHistory.CallerName</td>
+            <td>@callHistory.MobileNumber</td>
+            <td>@callHistory.Address</td>
+            <td>@callHistory.CallTypeName</td>
+            <td>@callHistory.Description</td>
+            <td>@callHistory.OrderCode</td>
+            <td>@callHistory.PaymentMethod</td>
+            <td>@Html.ActionLink("Edit", "EditCallHistory", new {id = callHistory.Id}, null)</td>
+        </tr>
+    }
+</table>
+
